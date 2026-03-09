@@ -1,0 +1,65 @@
+#include<bits/stdc++.h>
+using namespace std;
+const int N=10;
+vector<int>decendants[N];
+vector<int>ancestors[N];
+
+pair<int,int>mp[10];
+
+bool visited_dec[N];
+bool visited_anc[N];
+
+
+void dfs1(int source){
+  visited_dec[source]=true;
+mp[source].second++;
+  for(int c:decendants[source]){if(visited_dec[c]){continue;}
+
+dfs1(c);
+  
+}}
+void dfs2(int source){
+  visited_anc[source]=true;
+ mp[source].second++;
+  for(auto c:ancestors[source]){if(visited_anc[c]){continue;}
+
+dfs2(c);
+  
+}}
+
+
+int main(){
+  int t;
+  cin>>t;
+  int a;
+  cin>>a;
+  
+  while(a--){
+    int b,c;
+    cin>>b>>c;
+   
+    ancestors[b].push_back(c);
+    decendants[c].push_back(b);
+    
+  }
+  string s;
+  cin>>s;
+  int ans=0;
+  int tot;
+  cin>>tot;
+  while(tot--){
+    int mh;
+    cin>>mh;
+    dfs1(mh);
+    dfs2(mh);}
+  for(int i=1;i<=t;i++){
+    if(mp[i].second==0){cout<<i<<" ";
+      ans=0;
+    }
+  
+    
+  }
+  if(ans==0){cout<<"0"<<" ";}
+  
+}
+  
